@@ -194,6 +194,10 @@
 </script>
 {{- end }}
 
+{{ if .Param "math" }}
+  {{ partialCached "math.html" . }}
+{{ end }}
+
 {{- partial "extend_head.html" . -}}
 
 {{- /* Misc */}}
