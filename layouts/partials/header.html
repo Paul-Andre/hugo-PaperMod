@@ -25,12 +25,17 @@
                 <img src="{{- site.Params.label.icon | absURL -}}" alt="" aria-label="logo"
                     height="{{- site.Params.label.iconHeight | default "30" -}}">
                 {{- end -}}
-                {{- else if hasPrefix site.Params.label.iconSVG "<svg" }}
+                {{- else if hasPrefix site.Params.label.iconSVG "svg" }}
                     {{ site.Params.label.iconSVG | safeHTML }}
                 {{- end -}}
                 {{- $label_text -}}
             </a>
             {{- end }}
+        </div>
+        {{- $currentPage := . }}
+        <ul id="menu">
+
+            <li>
             <div class="logo-switches">
                 {{- if (not site.Params.disableThemeToggle) }}
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
@@ -79,9 +84,9 @@
                     {{- end }}
                 {{- end }}
             </div>
-        </div>
-        {{- $currentPage := . }}
-        <ul id="menu">
+            </li>
+
+
             {{- range site.Menus.main }}
             {{- $menu_item_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL) ) | absLangURL }}
             {{- $page_url:= $currentPage.Permalink | absLangURL }}
@@ -105,6 +110,8 @@
                 </a>
             </li>
             {{- end }}
+
         </ul>
+
     </nav>
 </header>
